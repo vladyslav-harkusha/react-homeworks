@@ -1,19 +1,19 @@
-import { FC } from "react";
-import {ISimpson} from "../../models/ISimpson.ts";
+import { FC, PropsWithChildren } from "react";
+import { ISimpson } from "../../models/ISimpson.ts";
 
-type PropsType = {
+interface IPropsType extends PropsWithChildren {
     simpson: ISimpson;
 }
 
-export const CharacterComponent: FC<PropsType> = ({ simpson }) => {
-    const { name, surname, age, info, photo } = simpson;
+export const CharacterComponent: FC<IPropsType> = ({ simpson, children }) => {
+    const { name, surname, age, photo } = simpson;
 
     return (
         <li className='flex gap-2 flex-col content-center text-center bg-amber-100 p-3'>
             <h2 className='text-3xl font-semibold'>{name + ' ' + surname}</h2>
             <h3 className='text-2xl'>{age} years old</h3>
             <img className='h-80 mt-10 mb-5' src={photo} alt={name}/>
-            <p className='max-w-60'>{info}</p>
+            <p className='max-w-60'>{children}</p>
         </li>
     );
 };
