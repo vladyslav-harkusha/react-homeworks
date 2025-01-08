@@ -1,9 +1,5 @@
 import { FC } from "react";
 import './App.css';
+import { TodosComponent } from "./components/todos-component/TodosComponent.tsx";
 
-export const App: FC = () => {
-
-    return (
-      <h1>Clear react-vite template</h1>
-    );
-};
+export const App: FC = () => <TodosComponent />;
