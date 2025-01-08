@@ -1,15 +1,17 @@
 .todo {
-    padding: 5px;
-    background-color: darkgray;
+    padding: 10px;
+    background-color: #dca86c;
+    border-radius: 10px;
 }
 .todo__title {
-    color: lightcyan;
+    color: saddlebrown;
     text-transform: uppercase;
 }
 .todo__status {
     text-transform: uppercase;
     text-align: center;
     color: green;
+    font-weight: bold;
 }
 .todo__statusUncompleted {
     color: red;

@@ -10,7 +10,7 @@ export const TodosComponent: FC = () => {
     useEffect(() => {
         const getTodosFromServer = async () => {
             const todosFromServer = await getTodos();
-            setTodos(todosFromServer);
+            setTodos(todosFromServer.todos);
         }
 
         getTodosFromServer();
@@ -18,8 +18,8 @@ export const TodosComponent: FC = () => {
 
     return (
         <ul className={styles.todos_list}>
-            {todos.map(todo => (
-                <TodoComponent key={todo.id} todo={todo} />
+            {todos.map(todoItem => (
+                <TodoComponent key={todoItem.id} todoItem={todoItem} />
             ))}
         </ul>
     );
