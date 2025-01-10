@@ -6,7 +6,6 @@ export const MainLayout: FC = () => {
     return (
         <>
             <NavMenu />
-            <hr/>
             <Outlet />
         </>
     );
