@@ -16,7 +16,7 @@ export const UsersList = () => {
     }, []);
 
     return (
-        <ul className='flex flex-col gap-6 ml-5'>
+        <ul className='flex flex-col gap-3 ml-5 min-w-96'>
             {users.map(user => (
                 <User key={user.id} user={user} />
             ))}
