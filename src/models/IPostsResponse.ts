@@ -1,7 +1,7 @@
 import {IPost} from "./IPost.ts";
 
 export interface IPostsResponse {
-    posts: IPost;
+    posts: IPost[];
     total: number;
     skip: number;
     limit: number;

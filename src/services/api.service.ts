@@ -3,7 +3,7 @@ import {urls} from "../constants/urls.ts";
 import {IPostsResponse} from "../models/IPostsResponse.ts";
 
 export const userService = {
-    getAllusers: async (): Promise<IUsersResponse> => {
+    getAllUsers: async (): Promise<IUsersResponse> => {
         const response = await fetch(urls.users.all);
 
         return response.json();
