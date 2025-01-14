@@ -9,7 +9,6 @@ export const Pagination: FC = () => {
     const prewPage = +currPage > 1 ? (+currPage - 1) : +currPage;
     const nextPage = 208 > +currPage * +usersPerPage ? (+currPage + 1) : +currPage;
 
-    console.log('render')
     return (
         <div className='p-3 ml-5'>
             <h3 className='text-2xl mb-2'>Page: {currPage}</h3>
