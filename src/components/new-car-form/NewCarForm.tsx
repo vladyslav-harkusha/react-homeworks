@@ -7,17 +7,17 @@ export const NewCarForm: FC = () => {
             <form className='flex flex-col gap-5 p-5 bg-yellow-200 border-2 border-yellow-800 w-max'>
                 <label>
                     <p>Add brand:</p>
-                    <input type="text" className='border-2 border-black'/>
+                    <input type="text" className='border-2 border-black w-80'/>
                 </label>
 
                 <label>
                     <p>Add price:</p>
-                    <input type="number" className='border-2 border-black'/>
+                    <input type="number" className='border-2 border-black w-80'/>
                 </label>
 
                 <label>
                     <p>Add year:</p>
-                    <input type="text" className='border-2 border-black'/>
+                    <input type="text" className='border-2 border-black w-80'/>
                 </label>
             </form>
         </div>
