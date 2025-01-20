@@ -41,7 +41,7 @@ export const NewCarForm: FC = () => {
             </div>
 
         );
-    };
+    }
 
     return (
         <div className='mt-10 ml-10'>
