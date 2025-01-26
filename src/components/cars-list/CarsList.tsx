@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from "react";
+import {CarItem} from "../car-item/CarItem.tsx";
 import {ICar} from "../../models/ICar.ts";
 import {carsService} from "../../services/api.cars.services.ts";
-import {CarItem} from "../car-item/CarItem.tsx";
 
 export const CarsList: FC = () => {
     const [cars, setCars] = useState<ICar[]>([]);
