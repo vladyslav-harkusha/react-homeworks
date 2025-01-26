@@ -2,6 +2,6 @@ import {FC} from "react";
 
 export const RightBranchA:FC = () => {
     return (
-        <div>Right Branch A</div>
+        <div className='bg-green-300 p-3 px-10'>Right Branch A</div>
     );
 };

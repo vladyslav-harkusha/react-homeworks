@@ -1,16 +1,15 @@
-import {FC, useContext} from "react";
-import {MyContext} from "../../context/MyContext.tsx";
-
+import {FC} from "react";
+import {LeftBranchA1} from "./LeftBranchA1.tsx";
+import {LeftBranchA2} from "./LeftBranchA2.tsx";
 
 export const LeftBranchA: FC = () => {
-    const { counterValue, increment } = useContext(MyContext);
-
     return (
         <div>
-            Left Branch A
-            <button onClick={() => increment(counterValue)} className='block border-2 border-yellow-800'>
-                increment
-            </button>
+            <p className='text-center mb-10 bg-green-300 p-3 px-10'>Left Branch A</p>
+            <div className='flex gap-10'>
+                <LeftBranchA1/>
+                <LeftBranchA2/>
+            </div>
         </div>
     );
 };
