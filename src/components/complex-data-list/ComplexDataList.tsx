@@ -33,11 +33,11 @@ export const ComplexDataList = () => {
                 {usersWithPostsAndComments.map(complexUser => (
                     <li key={complexUser.id} className='bg-blue-300 w-11/12 m-auto'>
                         <UserItem user={complexUser} />
-                        <p className='text-2xl font-bold mb-2'>Posts of this user:</p>
+                        <p className='text-2xl mb-2'>Posts of user {complexUser.id}:</p>
                         {complexUser.postsOfUser.map(post => (
                             <li key={post.id} className='bg-yellow-200 w-11/12 m-auto'>
                                 <PostItem post={post} />
-                                <p className='text-2xl'>Comments of this post:</p>
+                                <p className='text-2xl'>Comments of post number {post.id}:</p>
                                 {post.commentsOfPost.map(comment => (
                                     <li key={comment.id} className='bg-violet-100 w-11/12 m-auto'>
                                         <CommentItem comment={comment} />
