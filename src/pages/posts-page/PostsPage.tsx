@@ -1,7 +1,8 @@
 import {FC} from "react";
+import {PostsList} from "../../components/posts-list/PostsList.tsx";
 
 export const PostsPage: FC = () => {
     return (
-        <>posts page</>
+        <PostsList />
     );
 };

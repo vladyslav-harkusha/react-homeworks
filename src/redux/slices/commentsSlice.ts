@@ -1,12 +1,13 @@
 import {IComment} from "../../models/Comment.ts";
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isPending, PayloadAction} from "@reduxjs/toolkit";
 import {getAllEntities} from "../../services/api.service.ts";
 
 type CommentsStateType = {
     comments: IComment[];
+    isCommentsLoading: boolean;
 }
 
-const initialCommentsState: CommentsStateType = { comments: [] };
+const initialCommentsState: CommentsStateType = { comments: [], isCommentsLoading: false };
 
 const loadAllComments = createAsyncThunk('loadAllComments', async (_, thunkAPI) => {
     try {
@@ -21,7 +22,11 @@ const loadAllComments = createAsyncThunk('loadAllComments', async (_, thunkAPI) 
 export const commentsSlice = createSlice({
     name: 'commentSlice',
     initialState: initialCommentsState,
-    reducers: {},
+    reducers: {
+        handleIsCommentsLoading: (state, action: PayloadAction<boolean>) => {
+            state.isCommentsLoading = action.payload;
+        }
+    },
     extraReducers: builder => builder
         .addCase(loadAllComments.fulfilled, (state, action: PayloadAction<IComment[]>) => {
             state.comments = action.payload;
@@ -29,6 +34,12 @@ export const commentsSlice = createSlice({
         .addCase(loadAllComments.rejected, (state, action) => {
             console.log(state);
             console.log(action);
+        })
+        .addMatcher(isFulfilled(loadAllComments), (state) => {
+            state.isCommentsLoading = false;
+        })
+        .addMatcher(isPending(loadAllComments), (state) => {
+            state.isCommentsLoading = true;
         })
 });
 

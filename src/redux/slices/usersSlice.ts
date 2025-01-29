@@ -1,12 +1,13 @@
 import {IUser} from "../../models/IUser.ts";
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isPending, PayloadAction} from "@reduxjs/toolkit";
 import {getAllEntities} from "../../services/api.service.ts";
 
 type UsersStateType = {
     users: IUser[];
+    isUsersLoading: boolean;
 }
 
-const initialUsersState: UsersStateType = { users: [] };
+const initialUsersState: UsersStateType = { users: [], isUsersLoading: false };
 
 const loadAllUsers = createAsyncThunk('loadAllUsers', async (_, thunkAPI) => {
     try {
@@ -21,7 +22,11 @@ const loadAllUsers = createAsyncThunk('loadAllUsers', async (_, thunkAPI) => {
 export const usersSlice = createSlice({
     name: 'usersSlice',
     initialState: initialUsersState,
-    reducers: {},
+    reducers: {
+        handleIsUsersLoading: (state, action: PayloadAction<boolean>) => {
+            state.isUsersLoading = action.payload;
+        }
+    },
     extraReducers: builder => builder
         .addCase(loadAllUsers.fulfilled, (state, action: PayloadAction<IUser[]>) => {
             state.users = action.payload;
@@ -29,6 +34,12 @@ export const usersSlice = createSlice({
         .addCase(loadAllUsers.rejected, (state, action) => {
             console.log(state);
             console.log(action);
+        })
+        .addMatcher(isFulfilled(loadAllUsers), (state) => {
+            state.isUsersLoading = false;
+        })
+        .addMatcher(isPending(loadAllUsers), (state) => {
+            state.isUsersLoading = true;
         })
 });
 

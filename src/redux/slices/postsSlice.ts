@@ -1,12 +1,13 @@
 import {IPost} from "../../models/IPost.ts";
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isPending, PayloadAction} from "@reduxjs/toolkit";
 import {getAllEntities} from "../../services/api.service.ts";
 
 type PostsStateType = {
     posts: IPost[];
+    isPostsLoading: boolean;
 }
 
-const initialPostsState: PostsStateType = { posts: [] };
+const initialPostsState: PostsStateType = { posts: [], isPostsLoading: false };
 
 const loadAllPosts = createAsyncThunk('loadAllPosts', async (_, thunkAPI) => {
     try {
@@ -21,7 +22,11 @@ const loadAllPosts = createAsyncThunk('loadAllPosts', async (_, thunkAPI) => {
 export const postsSlice = createSlice({
     name: 'postsSlice',
     initialState: initialPostsState,
-    reducers: {},
+    reducers: {
+        handleIsPostsLoading: (state, action: PayloadAction<boolean>) => {
+            state.isPostsLoading = action.payload;
+        }
+    },
     extraReducers: builder => builder
         .addCase(loadAllPosts.fulfilled, (state, action: PayloadAction<IPost[]>) => {
             state.posts = action.payload;
@@ -29,6 +34,12 @@ export const postsSlice = createSlice({
         .addCase(loadAllPosts.rejected, (state, action) => {
             console.log(state);
             console.log(action);
+        })
+        .addMatcher(isFulfilled(loadAllPosts), (state) => {
+            state.isPostsLoading = false;
+        })
+        .addMatcher(isPending(loadAllPosts), (state) => {
+            state.isPostsLoading = true;
         })
 });
 

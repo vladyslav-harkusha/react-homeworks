@@ -1,9 +1,8 @@
 .cssload-loader {
     position: relative;
-    left: calc(50% - 31px);
     width: 100px;
     height: 100px;
-    margin:130px 0;
+    margin-top:130px;
     perspective: 780px;
 }
 
