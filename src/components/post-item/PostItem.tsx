@@ -7,8 +7,8 @@ type Props = {
 
 export const PostItem: FC<Props> = ({ post: {id, title, body} }) => {
     return (
-        <li className='mb-4'>
-            <h3 className='font-bold'>{id} -- {title}</h3>
+        <li className='mb-4 text-center'>
+            <h3 className='font-bold text-blue-800'>Post: {id} -- {title}</h3>
             <p>{body}</p>
         </li>
     );
