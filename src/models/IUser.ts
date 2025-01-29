@@ -1,81 +1,29 @@
-interface Hair {
-  color: string;
-  type: string;
-}
-
-interface Coordinates {
-  lat: number;
-  lng: number;
+interface Geo {
+  lat: string;
+  lng: string;
 }
 
 interface Address {
-  address: string;
+  street: string;
+  suite: string;
   city: string;
-  state: string;
-  stateCode: string;
-  postalCode: string;
-  coordinates: Coordinates;
-  country: string;
-}
-
-interface Bank {
-  cardExpire: string;
-  cardNumber: string;
-  cardType: string;
-  currency: string;
-  iban: string;
-}
-
-interface Address {
-  address: string;
-  city: string;
-  state: string;
-  stateCode: string;
-  postalCode: string;
-  coordinates: Coordinates;
-  country: string;
+  zipcode: string;
+  geo: Geo;
 }
 
 interface Company {
-  department: string;
   name: string;
-  title: string;
-  address: Address;
-}
-
-interface Crypto {
-  coin: string;
-  wallet: string;
-  network: string;
+  catchPhrase: string;
+  bs: string;
 }
 
 export interface IUser {
   id: number;
-  firstName: string;
-  lastName: string;
-  maidenName: string;
-  age: number;
-  gender: string;
-  email: string;
-  phone: string;
+  name: string;
   username: string;
-  password: string;
-  birthDate: string;
-  image: string;
-  bloodGroup: string;
-  height: number;
-  weight: number;
-  eyeColor: string;
-  hair: Hair;
-  ip: string;
+  email: string;
   address: Address;
-  macAddress: string;
-  university: string;
-  bank: Bank;
+  phone: string;
+  website: string;
   company: Company;
-  ein: string;
-  ssn: string;
-  userAgent: string;
-  crypto: Crypto;
-  role: string;
 }
